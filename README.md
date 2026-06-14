@@ -359,7 +359,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - [Tauri](https://tauri.app/) - Desktop app framework
-- [mimocode](https://github.com/nicepkg/mimocode) - AI coding assistant
+- [mimocode](https://github.com/XiaomiMiMo/MiMo-Code) - MiMo-Code
 - [React](https://react.dev/) - UI library
 - [Tailwind CSS](https://tailwindcss.com/) - CSS framework
 - [Zustand](https://github.com/pmndrs/zustand) - State management
