@@ -1,0 +1,29 @@
+[package]
+name = "mimochat"
+version = "0.1.0"
+description = "MimoChat - AI Desktop Assistant powered by mimocode"
+authors = ["NECTVETY Software <dxhop96@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/dxhop96/mimochat"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.6", features = [ "window-all", "shell-open", "shell-execute", "shell-sidecar"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+rfd = "0.15"
+base64 = "0.22"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+opt-level = "s"

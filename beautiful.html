@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            padding: 120px 24px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e1b4b 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(99,102,241,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(236,72,153,0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+
+        .hero h1 {
+            position: relative;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #c7d2fe 50%, #f9a8d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            position: relative;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(99,102,241,0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99,102,241,0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+        }
+
+        .card-icon.purple {
+            background: rgba(99,102,241,0.15);
+        }
+
+        .card-icon.pink {
+            background: rgba(236,72,153,0.15);
+        }
+
+        .card-icon.blue {
+            background: rgba(59,130,246,0.15);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            padding: 60px 24px;
+            background: linear-gradient(180deg, transparent 0%, rgba(30,41,59,0.5) 100%);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-size: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 16px 60px;
+            }
+
+            .container {
+                padding: 60px 16px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .stats {
+                gap: 24px;
+                padding: 40px 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Chào mừng đến với MiMo</h1>
+        <p>Nền tảng phát triển hiện đại với thiết kế đẹp và trải nghiệm người dùng tuyệt vời</p>
+        <button class="btn">
+            Bắt đầu ngay
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </section>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Người dùng</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Dự án</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Hài lòng</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Hỗ trợ</div>
+        </div>
+    </div>
+
+    <section class="container">
+        <h2 class="section-title">Tính năng nổi bật</h2>
+        <p class="section-subtitle">Khám phá các công cụ mạnh mẽ giúp bạn xây dựng sản phẩm tuyệt vời</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon purple">🚀</div>
+                <h3>Tốc độ cao</h3>
+                <p>Tối ưu hóa hiệu suất với kiến trúc hiện đại và tải trang siêu nhanh cho trải nghiệm mượt mà.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon pink">🎨</div>
+                <h3>Thiết kế đẹp</h3>
+                <p>Giao diện tinh tế với animation mượt mà, dark mode và responsive trên mọi thiết bị.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon blue">🔒</div>
+                <h3>Bảo mật tuyệt đối</h3>
+                <p>Mã hóa đầu cuối, xác thực đa lớp và tuân chuẩn quốc tế để bảo vệ dữ liệu của bạn.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 MiMo Code Agent. Built with <a href="#">passion</a>.</p>
+    </footer>
+</body>
+</html>

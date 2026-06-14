@@ -1,0 +1,67 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
+  },
+  "package": {
+    "productName": "MimoChat",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "execute": true,
+        "sidecar": true,
+        "open": true
+      },
+      "window": {
+        "all": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "identifier": "com.nectvety.mimochat",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.ico"
+      ],
+      "windows": {
+        "nsis": {
+          "displayLanguageSelector": false,
+          "installerIcon": "icons/icon.ico",
+          "languages": ["Vietnamese", "English"],
+          "headerImage": "icons/128x128.png",
+          "sidebarImage": "icons/128x128.png"
+        }
+      },
+      "category": "DeveloperTool",
+      "copyright": "NECTVETY Software by dxhop96@gmail.com",
+      "shortDescription": "AI Desktop Assistant powered by mimocode",
+      "longDescription": "MimoChat - Ứng dụng desktop AI Assistant với khả năng viết code, debug, dịch thuật và phân tích dự án."
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "title": "MimoChat - AI Assistant",
+        "width": 500,
+        "height": 700,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "transparent": false,
+        "center": true
+      }
+    ],
+    "updater": {
+      "active": false
+    }
+  }
+}
